@@ -126,7 +126,7 @@ public class AuthInterface {
             }
 
             userInfo.setDepartment(department);
-            userInfo.setDepartmentStr(departmentStr);
+//            userInfo.setDepartmentStr(departmentStr);
 
             return userInfo;
         } catch (Exception e) {

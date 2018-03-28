@@ -12,13 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.leyidai.web.service.IpForbiddenService;
 import com.leyidai.web.util.SiteUtil;
 
 public class SystemMaintenanceInterceptor implements HandlerInterceptor {
 
-	@Autowired
-	IpForbiddenService ipService;
+
 	
 	@Override
 	public boolean preHandle(HttpServletRequest request,
@@ -28,8 +26,7 @@ public class SystemMaintenanceInterceptor implements HandlerInterceptor {
 		
 		String ip=SiteUtil.getIpAddr(request);
 		
-		
-		
+
 		if (today.getHours() >= 22 || today.getHours() < 6) {
 			if (servletPath.equals("/systemMaintenance")) {
 				return true;
@@ -37,15 +34,6 @@ public class SystemMaintenanceInterceptor implements HandlerInterceptor {
 			request.getRequestDispatcher("/systemMaintenance").forward(request,
 					response);
 
-			return false;
-		}
-		else if(ipService.IsIpForbidden(ip)){
-			//如果ip是被封禁的
-			if (servletPath.equals("/ipForbidden")) {
-				return true;
-			}
-			request.getRequestDispatcher("/ipForbidden").forward(request,
-					response);
 			return false;
 		}
 		return true;

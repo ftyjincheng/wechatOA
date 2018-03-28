@@ -40,7 +40,7 @@ public class UserService {
 	/**
 	 * 添加新用户
 	 * 
-	 * @param loginUser
+	 * @param
 	 * @return
 	 */
 	@Transactional
@@ -91,7 +91,7 @@ public class UserService {
 	/**
 	 * 修改用户
 	 * 
-	 * @param loginUser
+	 * @param
 	 * @return
 	 */
 	@Transactional
@@ -174,7 +174,7 @@ public class UserService {
 	/**
 	 * 根据身份证号码查询userInfo
 	 * 
-	 * @param mobile
+	 * @param
 	 * @return
 	 */
 	@Transactional(readOnly = true)
@@ -211,7 +211,7 @@ public class UserService {
 	/**
 	 * 身份证号是否存在
 	 * 
-	 * @param mobile
+	 * @param
 	 * @return
 	 */
 	@Transactional(readOnly = true)
@@ -226,7 +226,7 @@ public class UserService {
 	/**
 	 * 身份证号是否被限制为黑名单
 	 * 
-	 * @param mobile
+	 * @param
 	 * @return
 	 */
 	@Transactional(readOnly = true)

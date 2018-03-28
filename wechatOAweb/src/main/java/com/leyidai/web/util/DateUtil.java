@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 
 import com.leyidai.web.util.CategoryConstants;
 import com.leyidai.entity.Dictionary;
-import com.leyidai.web.service.DictionaryService;
+
 /**
  * 时间工具类
  * 所有跟时间相关的工具集合
@@ -23,8 +23,7 @@ import com.leyidai.web.service.DictionaryService;
 @Component
 public class DateUtil {
 	private static final Logger log = LoggerFactory.getLogger(DateUtil.class);
-	@Autowired
-	private static DictionaryService dictionaryService;
+
 	/**
 	 * 时间格式
 	 * @author Administrator
@@ -402,100 +401,11 @@ public class DateUtil {
 		return date!=null?sdfOut.format(date):time;
 	}
 	
-	/**
-	 * 
-	 * @param 验证是否是节假日
-	 * @return 验证结果
-	 * @throws ParseException
-	 */
 
-	public static boolean isDateScale(Calendar cal) throws ParseException {
-		boolean flagForDate = false;
-		// 定义起始日期和终止日期
-		Date startDate;
-		Date endDate;
-		List<Dictionary> arrDateScale = dictionaryService
-				.getDictionarysByCatetory(CategoryConstants.HOLIDAY, String.valueOf(0));
-		String DateScale = "";
-		// 判断是否有节假日
-		if (arrDateScale.size() > 0) {
-			// 获取节假日信息
-			DateScale = arrDateScale.get(0).getDictionaryValue();
-			log.info(DateScale + "这是节假日");
-			String[] dateScaleList = DateScale.split(",");
-			// 格式化日期
-			SimpleDateFormat sdfforstart = new SimpleDateFormat("yyyyMMdd");
-			// 循环找出所有的假期来匹配当前日期是否是假期
-			for (String item : dateScaleList) {
-				// 起始日期
-				startDate = sdfforstart.parse(item.split("-")[0]);
-				// 结束日期
-				endDate = sdfforstart.parse(item.split("-")[1]);
-				// 转换date和calendar
-				Calendar calStart = Calendar.getInstance();
-				calStart.setTime(startDate);
-				Calendar calEnd = Calendar.getInstance();
-				calEnd.setTime(endDate);
-				// 给末尾的日期加一天，以让日期正确
-				calEnd.add(Calendar.DAY_OF_YEAR, 1);
-				// 如果处于起始和终止日期之间，则认为是节假日，返回true，终止循环
-				if (cal.after(calStart) && cal.before(calEnd)) {
-					flagForDate = true;
-					log.info("我是假期，跳出了假期小循环，当前日期是" + cal.getTime().toString());
-					break;
-				}
-			}
-		}
-		return flagForDate;
-	}
-
-	/**
-	 * 
-	 * @param 验证是否是调休日
-	 * @return验证结果
-	 */
-	public static boolean isChangeScale(Calendar cal) {
-		boolean flagForChange = false;
-		List<Dictionary> arrChangeScale = dictionaryService
-				.getDictionarysByCatetory(CategoryConstants.CHANGEHOLIDAY, String.valueOf(0));
-		String changeScale = "";
-		if (arrChangeScale.size() > 0) {
-			changeScale = arrChangeScale.get(0).getDictionaryValue();
-			log.info(changeScale + "这是调休日");
-			String[] changeScaleList = changeScale.split(",");
-			// 格式化日期
-			SimpleDateFormat sdfforstart = new SimpleDateFormat("yyyyMMdd");
-			// 循环找出所有的调休日来匹配当前日期是否是调休日
-			for (String item : changeScaleList) {
-				// 如果与调休日相同，则认为是调休日，返回true，终止循环
-				if (sdfforstart.format(cal.getTime()).equals(item)) {
-					flagForChange = true;
-					log.info("我是调休日，我跳出了调休日小循环，当前日期是"
-							+ cal.getTime().toString());
-					break;
-				}
-			}
-		}
-		return flagForChange;
-	}
-
-	/**
-	 * 
-	 * @param 验证是否是周末
-	 * @return 验证结果
-	 */
-	public static boolean isWeekend(Calendar cal) {
-		boolean flagForWeekend = false;
-		if (cal.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY
-				|| cal.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY) {
-			flagForWeekend = true;
-		}
-		return flagForWeekend;
-	}
 	
 	/**
 	 * 
-	 * @param 获得当天的日期1991-02-02格式
+	 * @param -02-02格式
 	 * @return 日期
 	 */
 	public static String getDate(){

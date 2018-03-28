@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class AfficheController {
-    private static final Logger log = LoggerFactory.getLogger(AccountController.class);
+    private static final Logger log = LoggerFactory.getLogger(AfficheController.class);
 
     @RequestMapping(value = "/notice/list")
     public String queryAfficheList() {
@@ -24,5 +24,4 @@ public class AfficheController {
     public String queryAfficheDetail(@PathVariable("id") String id) {
         return "wechatOA/noticedetail";
     }
-
 }

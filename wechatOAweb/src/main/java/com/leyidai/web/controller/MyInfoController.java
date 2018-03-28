@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class MyInfoController {
-    private static final Logger log = LoggerFactory.getLogger(AccountController.class);
+    private static final Logger log = LoggerFactory.getLogger(MyInfoController.class);
 
     @RequestMapping(value="/myInfo")
     public String myInfo(String code){

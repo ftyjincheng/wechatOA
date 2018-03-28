@@ -13,8 +13,6 @@ import java.util.Map.Entry;
 
 import org.slf4j.Logger;
 
-import com.leyidai.web.controller.OrderRecordsController;
-
 /**
  * @author xuwujing
  * @Data 2016-6-13 上午11:57:52
@@ -23,14 +21,14 @@ import com.leyidai.web.controller.OrderRecordsController;
 public class MyHttpRequest {
 
 	private static Logger log = org.slf4j.LoggerFactory
-			.getLogger(OrderRecordsController.class);
+			.getLogger(MyHttpRequest.class);
 	/**
 	 * 向指定URL发送GET方法的请求
 	 * 
 	 * @param url
 	 *            发送请求的URL
-	 * @param param
-	 *            请求Map参数，请求参数应该是 {"name1":"value1","name2":"value2"}的形式。
+	 * @param
+	 *            ，请求参数应该是 {"name1":"value1","name2":"value2"}的形式。
 	 * @param charset
 	 *            发送和接收的格式
 	 * @return URL 所代表远程资源的响应结果
@@ -57,8 +55,8 @@ public class MyHttpRequest {
 	 * 
 	 * @param url
 	 *            发送请求的URL
-	 * @param param
-	 *            请求Map参数，请求参数应该是 {"name1":"value1","name2":"value2"}的形式。
+	 * @param
+	 *            ，请求参数应该是 {"name1":"value1","name2":"value2"}的形式。
 	 * @param charset
 	 *            发送和接收的格式
 	 * @return URL 所代表远程资源的响应结果

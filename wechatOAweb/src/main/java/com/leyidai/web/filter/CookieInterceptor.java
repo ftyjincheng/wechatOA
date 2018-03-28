@@ -53,7 +53,7 @@ public class CookieInterceptor implements HandlerInterceptor {
                 }
 
                 userInfo.setDepartment(department);
-                userInfo.setDepartmentStr(departmentStr);
+//                userInfo.setDepartmentStr(departmentStr);
                 request.getSession().setAttribute("user", userInfo);
                 return true;
             }
